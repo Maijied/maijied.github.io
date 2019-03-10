@@ -11,6 +11,7 @@
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Anton|Roboto"/>
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <!-- Nucleo Icons -->
   <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
@@ -18,6 +19,153 @@
   <link href="./assets/css/blk-design-system.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
+  
+    <style type="text/css">
+
+
+
+
+.word {
+  font-family: 'Anton', sans-serif;
+  perspective: 1000px; 
+  perspective-origin: 200px 40px;
+}
+
+.word span {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 80px;
+  user-select: none;
+  line-height: .8;
+}
+
+.word span:nth-child(1).active {
+  animation: balance 1.5s ease-out;
+  transform-origin: 0% 100% 0px;
+}
+
+@keyframes balance {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  
+  30%, 60% {
+    transform: rotate(-45deg);
+  }
+}
+
+.word span:nth-child(2).active {
+  animation: shrinkjump 1s ease-in-out;
+  transform-origin: bottom center;
+}
+
+@keyframes shrinkjump {
+  10%, 35% {
+    transform: scale(2, .2) translate(0, 0);
+  }
+  
+  45%, 50% {
+    transform: scale(1) translate(0, -150px);
+  }
+  
+  80% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.word span:nth-child(3).active {
+  animation: falling 2s ease-out;
+  transform-origin: bottom center;
+}
+
+@keyframes falling {
+  12% {
+    transform: rotateX(240deg);
+  }
+  
+  24% {
+    transform: rotateX(150deg);
+  }
+  
+  36% {
+    transform: rotateX(200deg);
+  }
+  
+  48% {
+    transform: rotateX(175deg);
+  }
+  
+  60%, 85% {
+    transform: rotateX(180deg);
+  }
+  
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+.word span:nth-child(4).active {
+  animation: rotate 1s ease-out;
+}
+
+@keyframes rotate {
+  20%, 80% {
+    transform: rotateY(180deg);
+  }
+  
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.word span:nth-child(5).active {
+  animation: toplong 1.5s linear;
+}
+
+@keyframes toplong {
+  10%, 40% {
+    transform: translateY(-48vh) scaleY(1);
+  }
+  
+  90% {
+    transform: translateY(-48vh) scaleY(4);
+  }
+}
+.word span:nth-child(6).active {
+  animation: shrinkjump 1s ease-in-out;
+  transform-origin: right center;
+}
+
+@keyframes shrinkjump {
+  10%, 35% {
+    transform: scale(2, .2) translate(0, 0);
+  }
+  
+  45%, 50% {
+    transform: scale(1) translate(0, -150px);
+  }
+  
+  80% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+.word span:nth-child(7).active {
+  animation: balance2 1.5s ease-out;
+  transform-origin: 0% 100% 0px;
+}
+
+@keyframes balance2 {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  
+  30%, 60% {
+    transform: rotate(45deg);
+  }
+}
+
+
+  </style>
 </head>
 
 <body class="index-page">
@@ -112,7 +260,15 @@
       <div class="container">
         <div class="content-center brand">
            <h1 class="h1-seo">HELLO! &nbsp;  I'M</h1>
-          <h3 class="display-2">MAIZIED</h3>
+          <div class="word">
+  <span>M</span>
+  <span>A</span>
+  <span>I</span>
+  <span>Z</span>
+  <span>I</span>
+  <span>E</span>
+  <span>D</span>
+</div>
         </div>
       </div>
     </div>
@@ -508,6 +664,22 @@ Application Development for the class</p>
         }, 1000);
       }
     }
+  </script>
+                      <script type="text/javascript">
+    let spans = document.querySelectorAll('.word span');
+spans.forEach((span, idx) => {
+  span.addEventListener('click', (e) => {
+    e.target.classList.add('active');
+  });
+  span.addEventListener('animationend', (e) => {
+    e.target.classList.remove('active');
+  });
+  
+  // Initial animation
+  setTimeout(() => {
+    span.classList.add('active');
+  }, 750 * (idx+1))
+});
   </script>
 </body>
 
